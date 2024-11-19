@@ -31,8 +31,5 @@ jobs:
 workflows:
   version: 2
   main:
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"
     jobs:
       - build
