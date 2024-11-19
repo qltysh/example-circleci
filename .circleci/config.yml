@@ -1,0 +1,48 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:3.1
+    steps:
+      - checkout
+
+      # Set up Ruby environment
+      - run:
+          name: Set up Ruby
+          command: |
+            gem install bundler
+            bundle config set --local path 'vendor/bundle'
+            bundle install --jobs=4 --retry=3
+
+      # Run the default task
+      - run:
+          name: Run tests
+          command: bundle exec rspec --require spec_helper
+
+      # Qlty Coverage Action
+      - run:
+          name: Report Coverage Data with Qlty
+          command: |
+            curl -L https://qlty-releases.s3.amazonaws.com/qlty/latest/qlty-x86_64-unknown-linux-musl.tar.xz > qlty.tar.xz
+            tar -xf qlty.tar.xz qlty-x86_64-unknown-linux-musl/qlty --strip-components 1
+            ./qlty init --no --skip-plugins --no-upgrade-check
+            ./qlty coverage publish coverage/coverage.json
+workflows:
+  version: 2
+  main:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - main
+            pull_requests:
+              only:
+                - main
