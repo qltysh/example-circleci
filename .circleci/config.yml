@@ -27,22 +27,9 @@ jobs:
             tar -xf qlty.tar.xz qlty-x86_64-unknown-linux-musl/qlty --strip-components 1
             ./qlty init --no --skip-plugins --no-upgrade-check
             ./qlty coverage publish coverage/coverage.json
+
 workflows:
   version: 2
   main:
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"
-          filters:
-            branches:
-              only:
-                - main
     jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - main
-            pull_requests:
-              only:
-                - main
+      - build
