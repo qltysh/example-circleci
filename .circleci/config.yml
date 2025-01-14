@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  qlty: qltysh/qlty-orb@0.0.2
 jobs:
   build:
     docker:
@@ -18,15 +20,10 @@ jobs:
       - run:
           name: Run tests
           command: bundle exec rspec --require spec_helper
-
-      # Qlty Coverage Action
-      - run:
-          name: Report Coverage Data with Qlty
-          command: |
-            curl -L https://qlty-releases.s3.amazonaws.com/qlty/latest/qlty-x86_64-unknown-linux-musl.tar.xz > qlty.tar.xz
-            tar -xf qlty.tar.xz qlty-x86_64-unknown-linux-musl/qlty --strip-components 1
-            ./qlty init --no --skip-plugins --no-upgrade-check
-            ./qlty coverage publish coverage/coverage.json
+          
+      # Qlty Coverage Orb
+      - qlty/coverage_publish:
+          files: coverage/coverage.json
 
 workflows:
   version: 2
