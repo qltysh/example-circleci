@@ -21,13 +21,16 @@ jobs:
           
       - qlty/coverage_publish:
           incomplete: true
+          tag: "test"
           files: coverage/coverage.json
 
       - qlty/coverage_publish:
           incomplete: true
+          tag: "test"
           files: coverage/coverage.json
 
-      - qlty/coverage_complete
+      - qlty/coverage_complete:
+          tag: "test"
 
 workflows:
   version: 2
