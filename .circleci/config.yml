@@ -22,17 +22,14 @@ jobs:
       - qlty/coverage_publish:
           incomplete: true
           verbose: true
-          tag: "test"
           files: coverage/coverage.json
 
       - qlty/coverage_publish:
           incomplete: true
           verbose: true
-          tag: "test"
           files: coverage/coverage.json
 
-      - qlty/coverage_complete:
-          tag: "test"
+      - qlty/coverage_complete
 
 workflows:
   version: 2
