@@ -27,7 +27,7 @@ jobs:
           incomplete: true
           files: coverage/coverage.json
 
-      - qlty/coverage_complete:
+      - qlty/coverage_complete
 
 workflows:
   version: 2
