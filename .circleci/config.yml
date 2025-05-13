@@ -20,17 +20,19 @@ jobs:
           command: bundle exec rspec --require spec_helper
           
       - qlty/coverage_publish:
-          incomplete: "true"
-          tag: "test"
-          files: coverage/coverage.json
+        incomplete: true
+        verbose: true
+        tag: "test"
+        files: coverage/coverage.json
 
       - qlty/coverage_publish:
-          incomplete: "true"
-          tag: "test"
-          files: coverage/coverage.json
+        incomplete: true
+        verbose: true
+        tag: "test"
+        files: coverage/coverage.json
 
       - qlty/coverage_complete:
-          tag: "test"
+        tag: "test"
 
 workflows:
   version: 2
