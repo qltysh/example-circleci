@@ -17,6 +17,15 @@ This repository uses [Rspec](https://rspec.info/) for testing and [simplecov](ht
 
 See [`.circleci/config.yml`](./.circleci/config.yml) in this repository for a basic configuration.
 
+## Documentation
+
+- [Ruby Code Coverage Setup](https://docs.qlty.sh/coverage/generating-data#ruby-with-simplecov)
+- [Alternative supported CI providers](https://docs.qlty.sh/coverage/ci)
+
+## Help and feedback
+
+Join our [Discord](https://qlty.sh/discord) for help and feedback.
+
 ## License
 
 [MIT License](./LICENSE.md)
