@@ -11,20 +11,11 @@ This repository uses [Rspec](https://rspec.info/) for testing and [simplecov](ht
 - Ruby 2.7 or above
 - Test run with [bundle exec rspec](https://rspec.info/)
 - An account on Qlty (free for open source)
-- `QLTY_COVERAGE_TOKEN` is set as a GitHub Actions [repository secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository)
+- `QLTY_COVERAGE_TOKEN` is set as an environment variable
 
 ## Set up
 
-See [`.github/workflows/main.yml`](./.github/workflows/main.yml) in this repository for a basic configuration.
-
-## Documentation
-
-- [Advanced code coverage configuration](https://example.com)
-- [Alternative supported CI providers](https://example.com)
-
-## Help and feedback
-
-Join the our [Slack Community](https://example.com) for help and to provide feedback that we'll use to improve Qlty.
+See [`.circleci/config.yml`](./.circleci/config.yml) in this repository for a basic configuration.
 
 ## License
 
