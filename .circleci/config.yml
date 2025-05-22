@@ -8,7 +8,6 @@ jobs:
     steps:
       - checkout
 
-      # Set up Ruby environment
       - run:
           name: Set up Ruby
           command: |
@@ -16,14 +15,21 @@ jobs:
             bundle config set --local path 'vendor/bundle'
             bundle install --jobs=4 --retry=3
 
-      # Run the default task
       - run:
           name: Run tests
           command: bundle exec rspec --require spec_helper
           
-      # Qlty Coverage Orb
       - qlty/coverage_publish:
+          incomplete: true
+          verbose: true
           files: coverage/coverage.json
+
+      - qlty/coverage_publish:
+          incomplete: true
+          verbose: true
+          files: coverage/coverage.json
+
+      - qlty/coverage_complete
 
 workflows:
   version: 2
