@@ -20,10 +20,10 @@ jobs:
       - run:
           name: Run tests
           command: bundle exec rspec --require spec_helper
-          
+
       # Qlty Coverage Orb
       - qlty/coverage_publish:
-          files: coverage/coverage.json
+          files: coverage/coverage_test.json
 
 workflows:
   version: 2
